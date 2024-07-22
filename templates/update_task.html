@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Редактировать задачу{% endblock %}
+
+{% block content %}
+<h1>Редактировать задачу</h1>
+<form action="{{ url_for('update_task', task_id=task_id) }}" method="post">
+    <div class="mb-3">
+        <label for="title" class="form-label">Заголовок</label>
+        <input type="text" class="form-control" id="title" name="title" value="{{ task.title }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Описание</label>
+        <textarea class="form-control" id="description" name="description" required>{{ task.description }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
+<a href="{{ url_for('index') }}" class="btn btn-link mt-3">Назад к списку задач</a>
+{% endblock %}
